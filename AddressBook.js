@@ -49,7 +49,7 @@ class Contact
      }
     set city(city)
     {
-        let regCity = RegExp("^[A-Zaz-z]{4,}$");
+        let regCity = RegExp("^[A-Za-z]{4,}$");
         if(regCity.test(city))
         this._city = city;
         else throw "Incorrect city name"
@@ -102,8 +102,8 @@ class Contact
 }
 
 try {
-    let personContact = new Contact('Rosy', 'Rupali', 'sarjapur', 'Bengaluru', 'Karnataka', 234343, "81 7836427756", 'rosy644@yahoo.com')
-    let personContact1 = new Contact('Anu', 'Singh', 'kahalgaon', 'Bhagalpur', 'Bihar', 675423, "91 9431634576", 'anu123@gmail.com')
+    let personContact = new Contact('Rosy', 'Rupali', 'sarjapur', 'Bengaluru', 'Karnataka', "234 343", "81 7836427756", 'rosy644@ya.co.in')
+    let personContact1 = new Contact('Anu', 'Singh', 'kahalgaon', 'Bhagalpur', 'Bihar', "675 423", "91 9431634576", 'anu123@gm.co.in')
     console.log(personContact.toString());
     console.log(personContact1.toString());
     } catch (e) {
