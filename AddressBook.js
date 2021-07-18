@@ -1,15 +1,6 @@
 console.log("Welcome to Address Book System");
-var prompt = require('prompt-sync')();
 class Contact
 {
-    firstName;
-    lastName;
-    address;
-    city;
-    state;
-    zip;
-    phoneNo;
-    email;
     constructor(...params)
     {
         this.firstName = params[0]
@@ -78,7 +69,7 @@ class Contact
      }
     set zip(zip)
     {
-        let regZip = RegExp("^\\d{3}\\s\\d{3}$");
+        let regZip = RegExp("^\\d{6}$");
         if(regZip.test(zip))
         this._zip= zip;
         else throw "Incorrect Zip";
@@ -86,9 +77,6 @@ class Contact
     get phoneNo(){ 
         return this._phoneNo;
      }
-    /**
-     * @param {string} phoneNo
-     */
     set phoneNo(phoneNo)
     {
         let regPhoneNo = RegExp("^[1-9]{2}\\s[0-9]{10}$");
@@ -106,21 +94,6 @@ class Contact
         this._email = email;
         else throw "Incorrect email id";
     }
-
-    createContact() {
-        this.firstName = prompt('Enter the first name');
-        this.lastName = prompt('Enter the last name');
-        this.address = prompt('Enter the address');
-        this.city = prompt('Enter the city');
-        this.state = prompt('Enter the state');
-        this.zip = prompt('Enter the zipcode');
-        this.phoneNo = prompt('Enter the phone number');
-        this.email = prompt('Enter the email');
-        let contact = new Contact(this.firstName, this.lastName, this.address, this.city, this.state, this.zip,
-            this.phoneNo, this.email);
-        return contact;
-    
-    }
     toString()
     {
         return "FirstName: "+this.firstName+ ", LastName: "+this.lastName+ ", Address: "+this.address+ ", City: "+this.city+
@@ -128,39 +101,9 @@ class Contact
     }
 }
 
-
-//UC3 - adding contact to the array of addressbook
-var addressBook = new Array();
-function addContact(contact) {
-    addressBook.push(contact);
-}
-let contact = new Contact();
-addContact(contact.createContact());
-console.log(addressBook);
-
-//UC4 - Editing the the contact details if the contact name already exists
-function editContact(name) {
-    addressBook.filter(c => (c.firstName + c.lastName == name)).forEach(c => editDetails(c));
-}
-function editDetails(contact) {
-    var choice = parseInt(prompt('Enter what u wish to do\n1.Update phoneNumber\n2.Update Address\n3.Update email'));
-    switch (choice) {
-        case 1:
-            var phone = prompt('Enter new phone number');
-            contact.phoneNo = phone;
-            break;
-        case 2:
-            var address = prompt('Enter new address');
-            contact.address = address;
-            break;
-        case 3:
-            var email = prompt('Enter new email');
-            contact.email = email;
-            break;
-    }
-}
-
-//UC 5 Delete the contact details if the person name is present in addressbook
-function deleteContact(name) {
-    addressBook.filter(c => (c.firstName + c.lastName == name));
+try {
+    let personContact = new Contact('Rosy', 'Rupali', 'sarjapur', 'Bengaluru', 'Karnataka', "234343", "81 7836427756", 'rosy644@ya.co.in')
+    console.log(personContact.toString());
+    } catch (e) {
+    console.error(e);
 }
