@@ -159,3 +159,8 @@ function editDetails(contact) {
             break;
     }
 }
+
+//UC 5 Delete the contact details if the person name is present in addressbook
+function deleteContact(name) {
+    addressBook.filter(c => (c.firstName + c.lastName == name));
+}
