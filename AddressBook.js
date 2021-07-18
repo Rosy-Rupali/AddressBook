@@ -101,9 +101,19 @@ class Contact
     }
 }
 
+//Function to add name in addressBook
+function addName(addressBook, contact) {
+    addressBook.push(contact);
+}
+
 try {
     let personContact = new Contact('Rosy', 'Rupali', 'sarjapur', 'Bengaluru', 'Karnataka', "234343", "81 7836427756", 'rosy644@ya.co.in')
+    let personContact1 = new Contact('Anu', 'Singh', 'kahalgaon', 'Bhagalpur', 'Bihar', "675423", "91 9431634576", 'anu123@gm.co.in');
     console.log(personContact.toString());
+    console.log(personContact1.toString());
+    let addressBook = new Array();
+    addName(addressBook, personContact);
+    addName(addressBook, personContact1);
     } catch (e) {
     console.error(e);
 }
