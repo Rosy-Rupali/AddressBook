@@ -116,6 +116,12 @@ function deleteName(contact, name){
     var removeIndex = contact.filter(item=>item.firstName).indexOf(name);
     contact.splice(removeIndex,1);
 }
+
+//Function to count the contacts
+function countContacts(contact){
+    let count= contact.reduce((a, b) => a.concat(b), []).length;
+    console.log("Number of contacts is: "+count);
+ }
 try {
     let personContact = new Contact('Rosy', 'Rupali', 'sarjapur', 'Bengaluru', 'Karnataka', "234343", "81 7836427756", 'rosy644@ya.co.in')
     let personContact1 = new Contact('Anu', 'Singh', 'kahalgaon', 'Bhagalpur', 'Bihar', "675423", "91 9431634576", 'anu123@gm.co.in');
@@ -126,6 +132,7 @@ try {
     addName(addressBook, personContact1);
     updateName(addressBook, "Rosy", "Rashmi");
     deleteName(addressBook,'Anu');
+    countContacts(addressBook);
     console.log(addressBook);
     } catch (e) {
     console.error(e);
