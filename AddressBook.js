@@ -106,6 +106,11 @@ function addName(addressBook, contact) {
     addressBook.push(contact);
 }
 
+//Function to update name in addressBook
+function updateName(contact, oldName, newName) {
+    contact.filter(person => person.firstName == oldName).forEach(person => person.firstName = newName);
+}
+
 try {
     let personContact = new Contact('Rosy', 'Rupali', 'sarjapur', 'Bengaluru', 'Karnataka', "234343", "81 7836427756", 'rosy644@ya.co.in')
     let personContact1 = new Contact('Anu', 'Singh', 'kahalgaon', 'Bhagalpur', 'Bihar', "675423", "91 9431634576", 'anu123@gm.co.in');
@@ -114,6 +119,8 @@ try {
     let addressBook = new Array();
     addName(addressBook, personContact);
     addName(addressBook, personContact1);
+    updateName(addressBook, "Rosy", "Rashmi");
+    console.log(addressBook);
     } catch (e) {
     console.error(e);
 }
