@@ -111,6 +111,11 @@ function updateName(contact, oldName, newName) {
     contact.filter(person => person.firstName == oldName).forEach(person => person.firstName = newName);
 }
 
+//Function to delete name in addressBook
+function deleteName(contact, name){
+    var removeIndex = contact.filter(item=>item.firstName).indexOf(name);
+    contact.splice(removeIndex,1);
+}
 try {
     let personContact = new Contact('Rosy', 'Rupali', 'sarjapur', 'Bengaluru', 'Karnataka', "234343", "81 7836427756", 'rosy644@ya.co.in')
     let personContact1 = new Contact('Anu', 'Singh', 'kahalgaon', 'Bhagalpur', 'Bihar', "675423", "91 9431634576", 'anu123@gm.co.in');
@@ -120,6 +125,7 @@ try {
     addName(addressBook, personContact);
     addName(addressBook, personContact1);
     updateName(addressBook, "Rosy", "Rashmi");
+    deleteName(addressBook,'Anu');
     console.log(addressBook);
     } catch (e) {
     console.error(e);
