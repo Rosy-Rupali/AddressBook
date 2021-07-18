@@ -1,6 +1,15 @@
 console.log("Welcome to Address Book System");
+var prompt = require('prompt-sync')();
 class Contact
 {
+    firstName;
+    lastName;
+    address;
+    city;
+    state;
+    zip;
+    phoneNo;
+    email;
     constructor(...params)
     {
         this.firstName = params[0]
@@ -77,6 +86,9 @@ class Contact
     get phoneNo(){ 
         return this._phoneNo;
      }
+    /**
+     * @param {string} phoneNo
+     */
     set phoneNo(phoneNo)
     {
         let regPhoneNo = RegExp("^[1-9]{2}\\s[0-9]{10}$");
@@ -94,6 +106,21 @@ class Contact
         this._email = email;
         else throw "Incorrect email id";
     }
+
+    createContact() {
+        this.firstName = prompt('Enter the first name');
+        this.lastName = prompt('Enter the last name');
+        this.address = prompt('Enter the address');
+        this.city = prompt('Enter the city');
+        this.state = prompt('Enter the state');
+        this.zip = prompt('Enter the zipcode');
+        this.phoneNo = prompt('Enter the phone number');
+        this.email = prompt('Enter the email');
+        let contact = new Contact(this.firstName, this.lastName, this.address, this.city, this.state, this.zip,
+            this.phoneNo, this.email);
+        return contact;
+    
+    }
     toString()
     {
         return "FirstName: "+this.firstName+ ", LastName: "+this.lastName+ ", Address: "+this.address+ ", City: "+this.city+
@@ -101,11 +128,12 @@ class Contact
     }
 }
 
-try {
-    let personContact = new Contact('Rosy', 'Rupali', 'sarjapur', 'Bengaluru', 'Karnataka', "234 343", "81 7836427756", 'rosy644@ya.co.in')
-    let personContact1 = new Contact('Anu', 'Singh', 'kahalgaon', 'Bhagalpur', 'Bihar', "675 423", "91 9431634576", 'anu123@gm.co.in')
-    console.log(personContact.toString());
-    console.log(personContact1.toString());
-    } catch (e) {
-    console.error(e);
+
+//UC3 - adding contact to the array of addressbook
+var addressBook = new Array();
+function addContact(contact) {
+    addressBook.push(contact);
 }
+let contact = new Contact();
+addContact(contact.createContact());
+console.log(addressBook);
