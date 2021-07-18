@@ -138,6 +138,19 @@ function getPersonByCity(contactArray,cityName){
 function getPersonByState(contactArray,stateName){
     contactArray.filter(name => name.state == stateName).forEach(contact=>console.log(contact.toString()));
 }
+
+//Function to get count of persons by city
+function getCountByCity(contactArray, cityName) {
+    let count = contactArray.filter(contact => contact.city == cityName).reduce((a, b) => a.concat(b), []).length;
+    console.log("Number of contacts living in this city are: " + count);
+}
+
+//Function to get count of persons by state
+function getCountByState(contactArray, stateName) {
+    let count = contactArray.filter(contact => contact.state == stateName).reduce((a, b) => a.concat(b), []).length;
+    console.log("Number of contacts living in this state are: " + count);
+}
+
 try {
     let personContact = new Contact('Rosy', 'Rupali', 'sarjapur', 'Bengaluru', 'Karnataka', "234343", "81 7836427756", 'rosy644@ya.co.in');
     let personContact1 = new Contact('Anu', 'Singh', 'kahalgaon', 'Bhagalpur', 'Bihar', "675423", "91 9431634576", 'anu123@gm.co.in');
@@ -151,6 +164,8 @@ try {
     countContacts(addressBook);
     getPersonByCity(addressBook,'Dhanbad');
     getPersonByState(addressBook,'Bihar');
+    getCountByCity(addressBook, "Dhanbad");
+    getCountByState(addressBook, "Bihar");
     console.log(addressBook);
     } catch (e) {
     console.error(e);
