@@ -129,10 +129,19 @@ function countContacts(contact){
     console.log("Number of contacts is: "+count);
  }
 
+ //Function to get contacts by city name
+function getPersonByCity(contactArray,cityName){
+    contactArray.filter(name => name.city == cityName).forEach(contact=>console.log(contact.toString()));
+}
+
+//Function to get contacts by state name
+function getPersonByState(contactArray,stateName){
+    contactArray.filter(name => name.state == stateName).forEach(contact=>console.log(contact.toString()));
+}
 try {
-    let personContact = new Contact('Rosy', 'Rupali', 'sarjapur', 'Bengaluru', 'Karnataka', "234343", "81 7836427756", 'rosy644@ya.co.in')
+    let personContact = new Contact('Rosy', 'Rupali', 'sarjapur', 'Bengaluru', 'Karnataka', "234343", "81 7836427756", 'rosy644@ya.co.in');
     let personContact1 = new Contact('Anu', 'Singh', 'kahalgaon', 'Bhagalpur', 'Bihar', "675423", "91 9431634576", 'anu123@gm.co.in');
-    let personContact2 = new Contact('Harshita', 'Kajal', 'kahalgaon', 'Dhanbad', 'Bihar', "275423", "91 6726565776", 'harshita123@gm.co.in');
+    let personContact2 = new Contact('Harshita', 'Kajal', 'kanwar', 'Dhanbad', 'Bihar', "275423", "91 6726565776", 'harshita123@gm.co.in');
     let addressBook = new Array();
     addName(addressBook, personContact);
     addName(addressBook, personContact1);
@@ -140,6 +149,8 @@ try {
     updateName(addressBook, "Rosy", "Rashmi");
     deleteName(addressBook,'Anu');
     countContacts(addressBook);
+    getPersonByCity(addressBook,'Dhanbad');
+    getPersonByState(addressBook,'Bihar');
     console.log(addressBook);
     } catch (e) {
     console.error(e);
